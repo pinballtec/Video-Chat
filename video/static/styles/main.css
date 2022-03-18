@@ -1,3 +1,50 @@
+:root{
+    /* --shadow: -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+              -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+               box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1); */
+}
+
+
 body {
-    background-color: aquamarine;
+    background-color: rgba(232, 233, 239, 1);
+}
+
+#logo{
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+}
+
+#form-container{
+    width: 400px;
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+     box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.video-container{
+    flex-basis: 500px;
+    flex-grow: 1;
+    max-height: 100%;
+    min-height: 350px;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 2px;
+    background-color: rgba(198, 202, 219, 1);
+}
+
+#video-streams{
+    display: flex;
+    flex-wrap: wrap;
+    height: 85vh;
+    width: 75%;
+    margin: 0 auto;
 }

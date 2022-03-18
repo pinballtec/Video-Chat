@@ -6,9 +6,26 @@
 </head>
 <body>
     {% extends 'video_app/main.html' %}
-
     {% block content %}
-    <h2>Room</h2>
+        <main>
+            <section id="room-name-wrapper">
+                <p>Room Name: <span id="room-name"></span></p>
+            </section>
+
+            <section id="video-streams">
+
+                <div class="video-container" is="user-container-1">
+                    <div class="username-wrapper"><span class=""></span>My name</div>
+                    <div class="video-player" id="user-1"></div>
+                </div>
+
+                <div class="video-container" is="user-container-1">
+                    <div class="username-wrapper"><span class=""></span>My name</div>
+                    <div class="video-player" id="user-2"></div>
+                </div>
+
+            </section>
+        </main>
     {% endblock content %}
 </body>
 </html>
