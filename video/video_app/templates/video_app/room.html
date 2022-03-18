@@ -6,6 +6,7 @@
 </head>
 <body>
     {% extends 'video_app/main.html' %}
+    {% load static %}
     {% block content %}
         <main>
             <section id="room-name-wrapper">
@@ -26,6 +27,7 @@
 
             </section>
         </main>
+    <script type="text/javascript" src="{% static 'js/streams.js' %}"></script>
     {% endblock content %}
 </body>
 </html>
