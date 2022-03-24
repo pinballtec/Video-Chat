@@ -11,7 +11,8 @@ const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 let localTracks = []
 let remoteUsers = {}
 
-let joinAndDisplayLocalStream = async () => {
+let joinAndDisplayLocalStream = async () => { 
+    client.on('user-published', handleUserJoined)
     document.getElementById('room-name').innerText = CHANNEL
 
     try{
@@ -35,5 +36,32 @@ let joinAndDisplayLocalStream = async () => {
 
     await client.publish([localTracks[0], localTracks[1]])
 }
+
+let handleUserJoined = async (user, mediaType) => {
+    remoteUsers[user.uid] = user
+    await client.subscribe(user, mediaType)
+
+    if (mediaType === 'video'){
+        let player = document.getElementById(`user-container-${user.uid}`)
+        if (player != null){
+            player.remove()
+        }
+
+        let member = await getMember(user)
+
+        player = `<div  class="video-container" id="user-container-${user.uid}">
+            <div class="video-player" id="user-${user.uid}"></div>
+            <div class="username-wrapper"><span class="user-name">My Name</span></div>
+        </div>`
+
+        document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
+        user.videoTrack.play(`user-${user.uid}`)
+    }
+
+    if (mediaType === 'audio'){
+        user.audioTrack.play()
+    }
+}
+
 
 joinAndDisplayLocalStream()
