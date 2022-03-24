@@ -48,3 +48,9 @@ body {
     width: 75%;
     margin: 0 auto;
 }
+
+
+.video-player {
+    height: 100%;
+    width: 100%;
+}
