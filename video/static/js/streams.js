@@ -13,6 +13,7 @@ let remoteUsers = {}
 
 let joinAndDisplayLocalStream = async () => { 
     client.on('user-published', handleUserJoined)
+    client.on('user-left', handleUserLeft)
     document.getElementById('room-name').innerText = CHANNEL
 
     try{
@@ -63,5 +64,10 @@ let handleUserJoined = async (user, mediaType) => {
     }
 }
 
+
+let handleUserLeft = async = async (user) => {
+    delete remoteUsers[user.uid]
+    document.getElementById('user-container-${user.uid}').remove()
+}
 
 joinAndDisplayLocalStream()
