@@ -1,5 +1,5 @@
 const APP_ID = ''
-const CHANNEL = ''
+const CHANNEL = 'video'
 const TOKEN = ''
 
 let UID;
@@ -70,4 +70,30 @@ let handleUserLeft = async = async (user) => {
     document.getElementById('user-container-${user.uid}').remove()
 }
 
+let toggleCamera = async (e) => {
+    console.log('TOGGLE CAMERA TRIGGERED')
+    if(localTracks[1].muted){
+        await localTracks[1].setMuted(false)
+        e.target.style.backgroundColor = '#fff'
+    }else{
+        await localTracks[1].setMuted(true)
+        e.target.style.backgroundColor = 'rgb(255, 80, 80, 1)'
+    }
+}
+
+let toggleMic = async (e) => {
+    console.log('TOGGLE MIC TRIGGERED')
+    if(localTracks[0].muted){
+        await localTracks[0].setMuted(false)
+        e.target.style.backgroundColor = '#fff'
+    }else{
+        await localTracks[0].setMuted(true)
+        e.target.style.backgroundColor = 'rgb(255, 80, 80, 1)'
+    }
+}
+
 joinAndDisplayLocalStream()
+
+document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)
+document.getElementById('camera-btn').addEventListener('click', toggleCamera)
+document.getElementById('mic-btn').addEventListener('click', toggleMic)
